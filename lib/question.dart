@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class Question extends StatelessWidget {
@@ -9,12 +8,13 @@ class Question extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return SizedBox(width: double.infinity ,child: Text(
-
-      questionText,
-      style: TextStyle(fontSize: 28),
-      textAlign: TextAlign.center,
-    ),);
+    return SizedBox(
+      width: double.infinity,
+      child: Text(
+        questionText,
+        style: TextStyle(fontSize: 28, color: Color(0xff333531)),
+        textAlign: TextAlign.center,
+      ),
+    );
   }
 }

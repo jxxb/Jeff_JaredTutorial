@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import 'card.dart';
+import './colors.dart';
 // void main() {
 //   runApp(App());
 // }
 
 void main() => runApp(App());
 
-
 class App extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -16,6 +16,7 @@ class App extends StatefulWidget {
     return _AppState();
   }
 }
+
 class _AppState extends State<App> {
   var _questionIndex = 0;
 
@@ -33,32 +34,41 @@ class _AppState extends State<App> {
       'What\'s your favorite song Jeff?',
     ];
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Hi Jeff :)'
-          ),
-       ),
-      body: Column(children: [
-        Question(
-        questions[_questionIndex]
-        ),
-        ElevatedButton(
-          child: Text('Answer 1'),
-          onPressed: answerQuestion,
-        ),
-        ElevatedButton(
-          child: Text('Answer 2'),
-          onPressed: () => print('Answer 2 chosen!'),
-        ),
-        ElevatedButton(
-          child: Text('Answer 3'),
-          onPressed: () {
-            print('Pick number 3 mahLord');
-        },
-        ),
-      ],
+      theme: ThemeData(
+        primarySwatch: myColor.jymColor,
+          // buttonTheme: ButtonThemeData(
+          //     buttonColor: Color(0xff333531)
+            // primaryColor: Color(0xffFF4936),
+          // primaryColorDark: Color(0xff191009),
+          // accentColor: Color(0xffA7DCD0),
+          // backgroundColor: Color(0xffFFE9D6),
+          // )
       ),
-    ),
+
+      home: Scaffold(
+        backgroundColor: Color(0xffFFE9D6),
+        appBar: AppBar(
+          backgroundColor: Color(0xffFF4936),
+          title: Text(
+              'myJym', style: myColor.jymText,
+          ),
+        ),
+        body: Container(
+          padding: EdgeInsets.all(10),
+          child: Column(
+            children: [
+              CardContainer(
+                question: questions[_questionIndex],
+                answerQuestion: answerQuestion,
+              ),
+              CardContainer(
+                question: questions[_questionIndex],
+                answerQuestion: answerQuestion,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
